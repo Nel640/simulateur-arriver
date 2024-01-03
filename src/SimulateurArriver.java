@@ -16,7 +16,7 @@ public class SimulateurArriver
 			String runType = scan.next();
 			
 			
-			System.out.println("resultat de la course : " + horsesResult(horsesNumber, runType));
+			System.out.println("resultat de la course : " +  horsesToString(horsesResult(horsesNumber, runType)));
 			
 			System.out.println("voulez vous rejouez ? : ");
 			String continueAnswer = scan.next();
@@ -58,5 +58,15 @@ public class SimulateurArriver
 		}
 		
 		return runResult;
+	}
+	
+	public static String horsesToString ( ArrayList<Integer> horseResult)
+	{
+		String horsesString = "";
+		for (int intostring : horseResult)
+		{
+			horsesString += intostring + "" + " ";
+		}
+		return horsesString;
 	}
 }
