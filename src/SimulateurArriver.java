@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -14,6 +13,13 @@ public class SimulateurArriver
 		{
 			System.out.println("combien de chevaux sont dans la course ? (12 a 20 chevaux) : ");
 			int horsesNumber = scan.nextInt();
+			
+			while(horsesNumber > 20 || horsesNumber < 12 )
+			{
+				System.out.println("nombre de chevaux entre 12 et 20 uniquement : ");
+				horsesNumber = scan.nextInt();
+			}
+			
 			System.out.println("quel est le type de couse ? (tierce, quarte, quinte) : ");
 			String runType = scan.next();
 			
@@ -44,7 +50,7 @@ public class SimulateurArriver
 	{
 			 Random random = new Random();
 			 int nb;
-			 nb = nbMin+random.nextInt(nbMax-nbMin);
+			 nb = random.nextInt(nbMax-nbMin);
 			 return nb;
 	}
 	
