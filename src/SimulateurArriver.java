@@ -14,20 +14,12 @@ public class SimulateurArriver
 			System.out.println("combien de chevaux sont dans la course ? (12 a 20 chevaux) : ");
 			int horsesNumber = scan.nextInt();
 			
-			while(horsesNumber > 20 || horsesNumber < 12 )
-			{
-				System.out.println("nombre de chevaux entre 12 et 20 uniquement : ");
-				horsesNumber = scan.nextInt();
-			}
+			horsesNumber = verificationNumberHorses(horsesNumber, scan);
 			
 			System.out.println("quel est le type de couse ? (tierce, quarte, quinte) : ");
 			String runType = scan.next();
 			
-			while( !runType.equals("tierce") && !runType.equals("quarte") && !runType.equals("quinte"))
-			{
-				System.out.println("tierce , quarte ou quinte uniquement : ");
-				runType = scan.next();
-			}
+			runType = verificationType(runType, scan);
 			
 			System.out.println("resultat de la course : " +  horsesToString(horsesResult(horsesNumber, runType)));
 			System.out.println("voulez vous rejouez ? : ");
@@ -89,5 +81,25 @@ public class SimulateurArriver
 			horsesString += intostring + "" + " ";
 		}
 		return horsesString;
+	}
+	
+	public static String verificationType ( String Type , Scanner scan)
+	{
+		while( !Type.equals("tierce") && !Type.equals("quarte") && !Type.equals("quinte"))
+		{
+			System.out.println("tierce , quarte ou quinte uniquement : ");
+			Type = scan.next();
+		}
+		return Type;
+	}
+	
+	public static int verificationNumberHorses ( int numberHorse , Scanner scan)
+	{
+		while(numberHorse > 20 || numberHorse < 12 )
+		{
+			System.out.println("nombre de chevaux entre 12 et 20 uniquement : ");
+			numberHorse = scan.nextInt();
+		}
+		return numberHorse;
 	}
 }
