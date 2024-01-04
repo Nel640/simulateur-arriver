@@ -66,9 +66,14 @@ public class SimulateurArriver
 		
 		for(int i = 1 ; i < numberWinnerHorses + 1 ; i++)
 		{
-			int random = numberGenerate(1 , horsesNumber); 
-			runResult.add(random);
+			int random = numberGenerate(1 , horsesNumber)+1; 
+			if(!runResult.contains(random))
+			{
+				runResult.add(random);
+			}
 		}
+		
+		
 		
 		return runResult;
 	}
