@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class SimulateurArriver 
@@ -15,13 +17,17 @@ public class SimulateurArriver
 			System.out.println("quel est le type de couse ? (tierce, quarte, quinte) : ");
 			String runType = scan.next();
 			
+			while( !runType.equals("tierce") && !runType.equals("quarte") && !runType.equals("quinte"))
+			{
+				System.out.println("tierce , quarte ou quinte uniquement : ");
+				runType = scan.next();
+			}
 			
 			System.out.println("resultat de la course : " +  horsesToString(horsesResult(horsesNumber, runType)));
-			
 			System.out.println("voulez vous rejouez ? : ");
 			String continueAnswer = scan.next();
 			
-			if(continueAnswer.equals("O"))
+			if(continueAnswer.toUpperCase().equals("O"))
 			{
 				continueBool = true;
 			}
@@ -33,6 +39,15 @@ public class SimulateurArriver
 		}
 		scan.close();
 	}
+	
+	public static int numberGenerate ( int nbMin , int nbMax)
+	{
+			 Random random = new Random();
+			 int nb;
+			 nb = nbMin+random.nextInt(nbMax-nbMin);
+			 return nb;
+	}
+	
 	public static ArrayList<Integer> horsesResult (int horsesNumber , String runType)
 	{
 		ArrayList<Integer> runResult = new ArrayList<>();
@@ -53,7 +68,7 @@ public class SimulateurArriver
 		
 		for(int i = 1 ; i < numberWinnerHorses + 1 ; i++)
 		{
-			int random = (int) (Math.random() * ( (horsesNumber) - 1 ) +1);
+			int random = numberGenerate(1 , horsesNumber); 
 			runResult.add(random);
 		}
 		
